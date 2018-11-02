@@ -26,9 +26,9 @@ var blinkSun = () => {
     });
 
     var post_options = {
-      host: 'api.lifx.com/v1/lights/d073d521270c/effects/pulse',
+      host: 'api.lifx.com',
       port: '443',
-      path: '/',
+      path: '/v1/lights/d073d521270c/effects/pulse',
       method: 'POST',
       headers: {
           'Accept': '*/*',
@@ -44,6 +44,10 @@ var blinkSun = () => {
       res.on('data', function (chunk) {
           console.log('Response: ' + chunk);
       });
+    });
+
+    post_req.on('error', function(err) {
+        console.log('Error: ' + err);
     });
 
     post_req.write(post_data);
