@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const https = require('https');
+const xml2js = require('xml2js');
 
 var app = express()
 // var router = express.Router()
@@ -32,15 +33,24 @@ const poll = {
                 res.on('data', (chunk) => { rawData += chunk; });
                 res.on('end', () => {
                     try {
-                        const parsedData = JSON.parse(rawData);
-                        console.log("Raw data",parsedData);
+                        //const parsedData = JSON.parse(rawData);
+                        //console.log("Raw data",parsedData);
+                        var parser = new xml2js.Parser();
+                        var extractedData = "";
+                        parser.parseString(xml, function(err,result){
+                            extractedData = result['feed'];
+                            console.log(extractedData);
+                        });
 
+                        setTimeout(poll.pollB, 60000);
+                        /*
                         // The important logic comes here
                         if (parsedData.status === 'BUSY') {
                             setTimeout(poll.pollB, 60000); // request again in 10 secs
                         } else {
                             // Call the background process you need to
                         }
+                        */
                     } catch (e) {
                         console.error(e.message);
                     }
