@@ -37,7 +37,7 @@ const poll = {
                         //console.log("Raw data",parsedData);
                         var parser = new xml2js.Parser();
                         var extractedData = "";
-                        parser.parseString(xml, function(err,result){
+                        parser.parseString(rawData, function(err,result){
                             extractedData = result['feed'];
                             console.log(extractedData);
                         });
