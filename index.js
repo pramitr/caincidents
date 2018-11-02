@@ -38,8 +38,11 @@ const poll = {
                         var parser = new xml2js.Parser();
                         var extractedData = "";
                         parser.parseString(rawData, function(err,result){
-                            extractedData = result['feed'];
-                            console.log(extractedData);
+                            extractedData = result['feed']['entry'];
+                            extractedData.forEach((value) => {
+                                console.log(value);
+                            })
+                            
                         });
 
                         setTimeout(poll.pollB, 60000);
