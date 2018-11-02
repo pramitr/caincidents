@@ -27,6 +27,7 @@ var blinkSun = () => {
 
     var post_options = {
       host: 'https://api.lifx.com/v1/lights/d073d521270c/effects/pulse',
+      port: '80',
       path: '/',
       method: 'POST',
       headers: {
