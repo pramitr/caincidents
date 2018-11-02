@@ -40,9 +40,16 @@ var blinkSun = () => {
     };
 
     var post_req = https.request(post_options, function(res) {
-      res.on('data', function (chunk) {
-          console.log('Response: ' + chunk);
-      });
+        res.setEncoding('utf8');
+        console.log("statusCode: ", res.statusCode);
+        console.log("headers: ", res.headers);
+        let body = '';
+        res.on('data', function (chunk) {
+            body += chunk.toString();
+        });
+        res.on('end', () => {
+            console.log("Response", body);
+        });
     });
 
     post_req.on('error', function(err) {
