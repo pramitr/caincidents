@@ -3,6 +3,8 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const https = require('https');
 const xml2js = require('xml2js');
+const hourPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.atom"
+const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom"
 
 var app = express()
 // var router = express.Router()
@@ -15,7 +17,7 @@ app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 const poll = {
     pollB: function() {
-        https.get('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.atom', (res) => {
+        https.get(dayPath2_5, (res) => {
             const { statusCode } = res;
 
             let error;
