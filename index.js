@@ -53,7 +53,7 @@ var blinkSun = () => {
 
 const poll = {
     pollB: function() {
-        https.get(hourPath2_5, (res) => {
+        https.get(dayPath2_5, (res) => {
             const { statusCode } = res;
 
             let error;
@@ -77,12 +77,14 @@ const poll = {
                         var extractedData = "";
                         parser.parseString(rawData, function(err,result){
                             extractedData = result['feed']['entry'];
-                            extractedData.forEach((value) => {
+                            extractedData.forEach((value, index) => {
                                 var title = value['title'][0];
                                 var regex = /CA/g;
                                 var found = title.match(regex);
                                 if(found != null) {
-                                    blinkSun();
+                                    setTimeout(function() {
+                                        blinkSun()
+                                    }, 1500 * index)
                                 }
                             })
                             
