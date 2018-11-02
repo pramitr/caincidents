@@ -42,7 +42,12 @@ const poll = {
                         parser.parseString(rawData, function(err,result){
                             extractedData = result['feed']['entry'];
                             extractedData.forEach((value) => {
-                                console.log(value['title']);
+                                var title = value['title'][0];
+                                var regex = /CA/g;
+                                var found = title.match(regex);
+                                if(found != null) {
+                                    console.log("Match",title);
+                                }
                             })
                             
                         });
