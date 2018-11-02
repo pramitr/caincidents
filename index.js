@@ -40,7 +40,7 @@ const poll = {
                         parser.parseString(rawData, function(err,result){
                             extractedData = result['feed']['entry'];
                             extractedData.forEach((value) => {
-                                console.log(value);
+                                console.log(value['title']);
                             })
                             
                         });
