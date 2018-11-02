@@ -3,6 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const https = require('https');
 const xml2js = require('xml2js');
+const querystring = require('querystring');
 const hourPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.atom"
 const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom"
 
@@ -15,9 +16,44 @@ app.set('view engine', 'ejs')
 app.get('/', (req, res) => res.render('pages/index'))
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
+var blinkSun = () => {
+    var post_data = querystring.stringify({
+        "color": "red",
+        "period": 1,
+        "cycles": 2,
+        "persist": false,
+        "power_on": true
+    });
+
+    var post_options = {
+      host: 'closure-compiler.appspot.com',
+      port: '80',
+      path: '/compile',
+      method: 'POST',
+      headers: {
+          'Accept': '*/*',
+          'Authorization': 'Bearer cc7cf933ebefaf7b47574d219e3d2aa5e8338108e4627b3243d418c58376707b',
+          'Accept-Encoding': 'gzip, deflate',
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(post_data)
+      }
+    };
+
+    var post_req = http.request(post_options, function(res) {
+      res.setEncoding('utf8');
+      res.on('data', function (chunk) {
+          console.log('Response: ' + chunk);
+      });
+    });
+
+    post_req.write(post_data);
+    post_req.end();
+
+}
+
 const poll = {
     pollB: function() {
-        https.get(dayPath2_5, (res) => {
+        https.get(hourPath2_5, (res) => {
             const { statusCode } = res;
 
             let error;
@@ -46,7 +82,7 @@ const poll = {
                                 var regex = /CA/g;
                                 var found = title.match(regex);
                                 if(found != null) {
-                                    console.log("Match",title);
+                                    blinkSun();
                                 }
                             })
                             
