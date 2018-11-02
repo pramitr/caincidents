@@ -26,9 +26,8 @@ var blinkSun = () => {
     });
 
     var post_options = {
-      host: 'closure-compiler.appspot.com',
-      port: '80',
-      path: '/compile',
+      host: 'https://api.lifx.com/v1/lights/d073d521270c/effects/pulse',
+      path: '/',
       method: 'POST',
       headers: {
           'Accept': '*/*',
@@ -39,7 +38,7 @@ var blinkSun = () => {
       }
     };
 
-    var post_req = http.request(post_options, function(res) {
+    var post_req = https.request(post_options, function(res) {
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
           console.log('Response: ' + chunk);
