@@ -87,16 +87,18 @@ const poll = {
                         var extractedData = "";
                         parser.parseString(rawData, function(err,result){
                             extractedData = result['feed']['entry'];
-                            extractedData.forEach((value, index) => {
-                                var title = value['title'][0];
-                                var regex = /CA/g;
-                                var found = title.match(regex);
-                                if(found != null) {
-                                    setTimeout(function() {
-                                        blinkSun()
-                                    }, 1500 * index)
-                                }
-                            })
+                            if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
+                                extractedData.forEach((value, index) => {
+                                    var title = value['title'][0];
+                                    var regex = /CA/g;
+                                    var found = title.match(regex);
+                                    if(found != null) {
+                                        setTimeout(function() {
+                                            blinkSun()
+                                        }, 1500 * index)
+                                    }
+                                })
+                            }
                             
                         });
 
