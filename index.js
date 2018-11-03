@@ -25,6 +25,8 @@ var blinkSun = () => {
         "power_on": true
     };
 
+    var length = JSON.stringify(post_data).length;
+
     var post_options = {
       host: 'api.lifx.com',
       port: 443,
@@ -33,7 +35,7 @@ var blinkSun = () => {
       headers: {
           Authorization: ' Bearer cc7cf933ebefaf7b47574d219e3d2aa5e8338108e4627b3243d418c58376707b',
           'Content-Type': 'application/json',
-          'Content-Length': JSON.stringify(post_data).length
+          'Content-Length': length
       }
     };
 
