@@ -18,11 +18,11 @@ app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 var blinkSun = () => {
     var post_data = querystring.stringify({
-        "color": "red",
-        "period": 1,
-        "cycles": 2,
-        "persist": false,
-        "power_on": true
+        color: 'red',
+        period: 1,
+        cycles: 2,
+        persist: false,
+        power_on: true
     });
 
     var post_options = {
