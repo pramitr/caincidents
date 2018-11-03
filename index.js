@@ -17,15 +17,15 @@ app.get('/', (req, res) => res.render('pages/index'))
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 var blinkSun = () => {
-    var post_data = {
+    var post_data = JSON.stringify({
         "color": "red",
         "period": 1,
         "cycles": 2,
         "persist": false,
         "power_on": true
-    };
+    });
 
-    var length = JSON.stringify(post_data).length;
+    var length = post_data.length;
 
     var post_options = {
       host: 'api.lifx.com',
