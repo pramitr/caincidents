@@ -3,7 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const https = require('https');
 const xml2js = require('xml2js');
-const querystring = require('querystring');
+//const querystring = require('querystring');
 const hourPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.atom"
 const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom"
 
@@ -17,13 +17,13 @@ app.get('/', (req, res) => res.render('pages/index'))
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 var blinkSun = () => {
-    var post_data = querystring.stringify({
-        color: 'red',
-        period: 1,
-        cycles: 2,
-        persist: false,
-        power_on: true
-    });
+    var post_data = {
+        "color": "red",
+        "period": 1,
+        "cycles": 2,
+        "persist": false,
+        "power_on": true
+    };
 
     var post_options = {
       host: 'api.lifx.com',
