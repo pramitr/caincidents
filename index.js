@@ -27,15 +27,15 @@ var blinkSun = () => {
 
     var post_options = {
       host: 'api.lifx.com',
-      port: '443',
+      port: 443,
       path: '/v1/lights/d073d521270c/effects/pulse',
       method: 'POST',
       headers: {
-          'Accept': '*/*',
-          'Authorization': ' Bearer cc7cf933ebefaf7b47574d219e3d2aa5e8338108e4627b3243d418c58376707b',
+          Accept: '*/*',
+          Authorization: ' Bearer cc7cf933ebefaf7b47574d219e3d2aa5e8338108e4627b3243d418c58376707b',
           'Accept-Encoding': 'gzip, deflate',
           'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(post_data)
+          'Content-Length': post_data.length
       }
     };
 
