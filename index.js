@@ -108,7 +108,7 @@ const poll = {
                         /*
                         // The important logic comes here
                         if (parsedData.status === 'BUSY') {
-                            setTimeout(poll.pollB, 60000); // request again in 10 secs
+                            setTimeout(poll.pollB, 300000); // request again in 5 mniutes
                         } else {
                             // Call the background process you need to
                         }
