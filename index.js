@@ -53,6 +53,7 @@ app.get('/', (req, res) => {
   }).on('error', (e) => {
       console.error(`Got error: ${e.message}`);
   })
+  console.log("Status",statusMsgs);
   res.render('pages/start', {
     messages: statusMsgs
   })
