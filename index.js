@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
                       if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
                           extractedData.forEach((value, index) => {
                               let summary = value['summary'][0];
-                              console.log("Summary",summary);
+                              //console.log("Summary",summary);
                               statusMsgs.push(summary);
                           })
                       }
