@@ -13,7 +13,50 @@ var app = express()
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
-app.get('/', (req, res) => res.render('pages/start'))
+app.get('/', (req, res) => {
+  let statusMsgs = [];
+  https.get(hourPath2_5, (rs) => {
+      const { statusCode } = rs;
+
+      let error;
+      if (statusCode !== 200) {
+          error = new Error(`Request Failed.\n` +
+              `Status Code: ${statusCode}`);
+      }
+
+      if (error) {
+          console.error(error.message);
+          rs.resume();
+      } else {
+          rs.setEncoding('utf8');
+          let rawData = '';
+          rs.on('data', (chunk) => { rawData += chunk; });
+          rs.on('end', () => {
+              try {
+                  var parser = new xml2js.Parser();
+                  var extractedData = "";
+                  console.log("Response raw data:",rawData);
+                  parser.parseString(rawData, function(err,result){
+                      extractedData = result['feed']['entry'];
+                      if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
+                          extractedData.forEach((value, index) => {
+                              let summary = value['summary'][0];
+                              statusMsgs.push(summary);
+                          })
+                      }
+                  });
+              } catch (e) {
+                  console.error(e.message);
+              }
+          });
+      }
+  }).on('error', (e) => {
+      console.error(`Got error: ${e.message}`);
+  })
+  res.render('pages/start', {
+    messages: statusMsgs
+  })
+})
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 var blinkSun = () => {
@@ -104,7 +147,7 @@ const poll = {
 
                         });
 
-                        setTimeout(poll.pollB, 120000);
+                        setTimeout(poll.pollB, 300000);
                         /*
                         // The important logic comes here
                         if (parsedData.status === 'BUSY') {

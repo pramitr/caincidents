@@ -8,4 +8,10 @@
 
 <div class="jumbotron text-center">Here lies the personal NodeJS apps from Pramit</div>
 
+<ul>
+  <%for (var msg in messages){%>
+  <li><%=msg%>:<%=messages[msg]%></li>
+  <%}%>
+</ul>
+
 </body>
