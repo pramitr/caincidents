@@ -17,13 +17,11 @@ app.get('/', (req, res) => {
   let statusMsgs = [];
   https.get(dayPath2_5, (rs) => {
       const { statusCode } = rs;
-
       let error;
       if (statusCode !== 200) {
           error = new Error(`Request Failed.\n` +
               `Status Code: ${statusCode}`);
       }
-
       if (error) {
           console.error(error.message);
           rs.resume();
@@ -31,7 +29,7 @@ app.get('/', (req, res) => {
           rs.setEncoding('utf8');
           let rawData = '';
           rs.on('data', (chunk) => { rawData += chunk; });
-          rs.on('end', (statusMsgs) => {
+          rs.on('end', () => {
               try {
                   var parser = new xml2js.Parser();
                   var extractedData = "";
@@ -43,20 +41,22 @@ app.get('/', (req, res) => {
                               //console.log("Summary",summary);
                               statusMsgs.push(summary);
                           })
+
                       }
                   });
               } catch (e) {
                   console.error(e.message);
               }
+              console.log("Status",statusMsgs);
+              res.render('pages/start', {
+                messages: statusMsgs
+              })
           });
       }
   }).on('error', (e) => {
       console.error(`Got error: ${e.message}`);
   })
-  console.log("Status",statusMsgs);
-  res.render('pages/start', {
-    messages: statusMsgs
-  })
+
 })
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
