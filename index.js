@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.get('/', (req, res) => {
   let statusMsgs = [];
-  https.get(hourPath2_5, (rs) => {
+  https.get(dayPath2_5, (rs) => {
       const { statusCode } = rs;
 
       let error;
