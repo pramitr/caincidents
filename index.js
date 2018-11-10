@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
                       extractedData = result['feed']['entry'];
                       if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
                           extractedData.forEach((value, index) => {
-                              let summary = value['summary'][0];
+                              let summary = value['summary'][0]['_'];
                               //console.log("Summary",summary);
                               statusMsgs.push(summary);
                           })
