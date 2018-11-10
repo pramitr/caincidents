@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
           rs.setEncoding('utf8');
           let rawData = '';
           rs.on('data', (chunk) => { rawData += chunk; });
-          rs.on('end', () => {
+          rs.on('end', (statusMsgs) => {
               try {
                   var parser = new xml2js.Parser();
                   var extractedData = "";
