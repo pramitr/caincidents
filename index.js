@@ -35,12 +35,12 @@ app.get('/', (req, res) => {
               try {
                   var parser = new xml2js.Parser();
                   var extractedData = "";
-                  console.log("Response raw data:",rawData);
                   parser.parseString(rawData, function(err,result){
                       extractedData = result['feed']['entry'];
                       if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
                           extractedData.forEach((value, index) => {
                               let summary = value['summary'][0];
+                              console.log("Summary",summary);
                               statusMsgs.push(summary);
                           })
                       }
