@@ -3,7 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const https = require('https');
 const xml2js = require('xml2js');
-var current_hour = require('./time.js');
+var is_wee_hour = require('./time.js');
 //const querystring = require('querystring');
 const hourPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.atom"
 const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom"
@@ -142,10 +142,14 @@ const poll = {
                                     var title = value['title'][0];
                                     var regex = /CA|California/g;
                                     var found = title.match(regex);
-                                    if(found != null) {
+                                    if(found != null && !is_wee_hour()) {
                                         setTimeout(function() {
                                             blinkSun()
                                         }, 1500 * index)
+                                    }
+                                    else {
+                                      console.log("Is wee hour? ",is_wee_hour());
+                                      console.log("Is CA or California match found? ",found);
                                     }
                                 })
                             }
@@ -172,4 +176,3 @@ const poll = {
     }
 }
 poll.pollB();
-current_hour();
