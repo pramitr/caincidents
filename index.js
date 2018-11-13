@@ -39,7 +39,10 @@ app.get('/', (req, res) => {
                           extractedData.forEach((value, index) => {
                               let summary = value['summary'][0]['_'];
                               //console.log("Summary",summary);
-                              statusMsgs.push(summary);
+                              let title = value['title'][0];
+                              statusMsgs.push({
+                                title: title,
+                                content: summary});
                           })
 
                       }
@@ -136,7 +139,7 @@ const poll = {
                             if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
                                 extractedData.forEach((value, index) => {
                                     var title = value['title'][0];
-                                    var regex = /CA/g;
+                                    var regex = /CA|California/g;
                                     var found = title.match(regex);
                                     if(found != null) {
                                         setTimeout(function() {

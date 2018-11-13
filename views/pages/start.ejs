@@ -10,9 +10,12 @@
 
 <table>
   <tbody>
-  <%for (var msg in messages){%>
+  <%for (var i in messages){%>
   <tr>
-    <td><%- messages[msg] %></td>
+    <td>
+    	<p><%= messages[i]['title'] %></p>
+    	<%- messages[i]['content'] %>
+    </td>
   </tr>
   <%}%>
 </tbody>
