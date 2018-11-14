@@ -1,11 +1,12 @@
 const https = require('https');
 const xml2js = require('xml2js');
+var is_wee_hour = require('./time.js');
 const hourPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.atom"
 const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom"
 
 const poll = {
     polling: function() {
-        https.get(hourPath2_5, (res) => {
+        https.get(dayPath2_5, (res) => {
             const { statusCode } = res;
 
             let error;
