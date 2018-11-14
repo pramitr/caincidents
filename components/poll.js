@@ -96,7 +96,7 @@ const poll = {
 
                         });
 
-                        setTimeout(poll.pollB, 300000);
+                        setTimeout(poll.polling, 300000);
                         /*
                         // The important logic comes here
                         if (parsedData.status === 'BUSY') {
