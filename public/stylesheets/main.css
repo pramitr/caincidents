@@ -24,4 +24,6 @@
     border: 2px solid white; }
     .jumbotron .lang-logo img {
       max-width: 100%; }
-
+.app-body {
+  margin: 5px 5px 0 10px;
+}
