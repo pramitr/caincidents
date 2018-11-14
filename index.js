@@ -66,50 +66,5 @@ app.get('/', (req, res) => {
 })
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-var blinkSun = () => {
-    var post_data = JSON.stringify({
-        "color": "red",
-        "period": 1,
-        "cycles": 2,
-        "persist": false,
-        "power_on": true
-    });
-
-    var length = post_data.length;
-
-    var post_options = {
-      host: 'api.lifx.com',
-      port: 443,
-      path: '/v1/lights/d073d521270c/effects/pulse',
-      method: 'POST',
-      headers: {
-          'Authorization': ' Bearer cc7cf933ebefaf7b47574d219e3d2aa5e8338108e4627b3243d418c58376707b',
-          'Content-Type': 'application/json',
-          'Content-Length': length
-      }
-    };
-
-    var post_req = https.request(post_options, function(res) {
-        res.setEncoding('utf8');
-        console.log("statusCode: ", res.statusCode);
-        console.log("headers: ", res.headers);
-        let body = '';
-        res.on('data', function (chunk) {
-            body += chunk.toString();
-        });
-        res.on('end', () => {
-            console.log("Response", body);
-        });
-    });
-
-    post_req.on('error', function(err) {
-        console.log('Error: ' + err);
-    });
-
-    post_req.write(post_data);
-    post_req.end();
-
-}
-
 
 poll.polling();
