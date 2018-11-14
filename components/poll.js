@@ -1,4 +1,6 @@
 const https = require('https');
+const hourPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.atom"
+const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom"
 
 const poll = {
     polling: function() {
