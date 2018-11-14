@@ -1,3 +1,5 @@
+const https = require('https');
+
 const poll = {
     polling: function() {
         https.get(hourPath2_5, (res) => {
