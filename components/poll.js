@@ -51,7 +51,7 @@ var blinkSun = () => {
 
 const poll = {
     polling: function() {
-        https.get(dayPath2_5, (res) => {
+        https.get(hourPath2_5, (res) => {
             const { statusCode } = res;
 
             let error;
