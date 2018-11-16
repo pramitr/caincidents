@@ -29,7 +29,7 @@ let renderEQ = (req, res) => {
         }
         console.log("Status",statusMsgs);
         res.render('pages/eq', {
-            page: "Earthquake in CA"
+            page: "Earthquake in CA",
             messages: statusMsgs
         })
 	})
