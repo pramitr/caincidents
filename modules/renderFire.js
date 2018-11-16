@@ -33,6 +33,8 @@ let renderFire = (req, res) => {
             console.error(e.message);
         }
 
+        console.log("Messages",messages);
+
         res.render('pages/fire', {
             page: "Fire in CA",
             messages: messages
