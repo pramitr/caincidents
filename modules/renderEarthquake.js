@@ -3,7 +3,7 @@ const hourPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2
 const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom"
 const xml2js = require('xml2js');
 
-let renderHome = (req, res) => {
+let renderEQ = (req, res) => {
 	getContent(hourPath2_5)
 	.then((resp) => {
         let statusMsgs = [];
@@ -28,11 +28,12 @@ let renderHome = (req, res) => {
             console.error(e.message);
         }
         console.log("Status",statusMsgs);
-        res.render('pages/start', {
+        res.render('pages/eq', {
+            page: "Earthquake in CA"
             messages: statusMsgs
         })
 	})
-    .catch((err) => console.error(`Got error: ${err.message}`));
+    .catch((err) => console.error(`Got error while rendering EQ: ${err.message}`));
 }
 
-module.exports = renderHome;
+module.exports = renderEQ;
