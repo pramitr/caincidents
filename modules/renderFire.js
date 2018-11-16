@@ -47,7 +47,8 @@ let renderFire = (req, res) => {
 
         res.render('pages/fire', {
             page: "Fire in CA",
-            messages: messages
+            messages: messages,
+            pageId: "fire"
         })
 
 	})

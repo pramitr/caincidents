@@ -30,7 +30,8 @@ let renderEQ = (req, res) => {
         console.log("Status",statusMsgs);
         res.render('pages/eq', {
             page: "Earthquake in CA",
-            messages: statusMsgs
+            messages: statusMsgs,
+            pageId: "earthquake"
         })
 	})
     .catch((err) => console.error(`Got error while rendering EQ: ${err.message}`));
