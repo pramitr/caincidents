@@ -12,7 +12,7 @@ let renderFire = (req, res) => {
             var extractedData = [];
             parser.parseString(resp, function(err,result){
             	extractedData = result['rss']['channel'][0]['item'];
-            	console.log("ExtractedData", extractedData);
+            	//console.log("ExtractedData", extractedData);
             	if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
             		extractedData.forEach((value, index) => {
             			let link = value['link'][0];
@@ -23,7 +23,7 @@ let renderFire = (req, res) => {
             			let location = latlongToDMS(lat, long);
             			//console.log("link: ",link);
             			//console.log("title: ",title)
-            			console.log("lat long: ",lat,long);
+            			//console.log("lat long: ",lat,long);
             			//console.log("desc: ",desc);
             			messages.push({
             				link: link,
