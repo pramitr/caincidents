@@ -19,7 +19,7 @@ let renderFire = (req, res) => {
             			let title = value['title'][0];
             			let desc = value['description'][0];
             			let lat = (value["geo:lat"] != undefined)? value["geo:lat"][0] : 0;
-            			let long = (value["geo:long"][0] != undefined) ? value["geo:long"][0] : 0;
+            			let long = (value["geo:long"] != undefined) ? value["geo:long"][0] : 0;
             			let location = latlongToDMS(lat, long);
             			//console.log("link: ",link);
             			//console.log("title: ",title)
