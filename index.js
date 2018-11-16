@@ -1,8 +1,6 @@
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
-const https = require('https');
-const xml2js = require('xml2js');
 //const querystring = require('querystring');
 
 

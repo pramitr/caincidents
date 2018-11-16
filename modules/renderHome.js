@@ -1,11 +1,12 @@
 const getContent = require('./getContent.js');
 const hourPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.atom"
 const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom"
-
+const xml2js = require('xml2js');
 
 let renderHome = (req, res) => {
 	getContent(hourPath2_5)
 	.then((resp) => {
+        let statusMsgs = [];
 		try {
             var parser = new xml2js.Parser();
             var extractedData = "";
