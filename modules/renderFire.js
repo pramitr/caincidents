@@ -21,9 +21,10 @@ let renderFire = (req, res) => {
             			let lat = value['geo:lat'][0];
             			let long = value['geo:long'][0];
             			let location = latlongToDMS(lat, long);
-            			console.log("link",link);
-            			console.log("title",title)
-            			console.log("lat long",lat,long);
+            			//console.log("link: ",link);
+            			//console.log("title: ",title)
+            			//console.log("lat long: ",lat,long);
+            			console.log("desc: ",desc);
             			messages.push({
             				link: link,
             				title: title,
