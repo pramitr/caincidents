@@ -34,7 +34,7 @@ let renderFire = (req, res) => {
             		});
             	}
             	else {
-            		console.log("Not array");
+            		console.log("Not an array");
             	}
 
             });
@@ -46,7 +46,7 @@ let renderFire = (req, res) => {
         
 
         res.render('pages/fire', {
-            page: "Fire in CA",
+            page: "All fire reports in California",
             messages: messages,
             pageId: "fire"
         })
