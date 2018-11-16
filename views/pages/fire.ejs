@@ -13,7 +13,7 @@
     <ul class="app-list">
       <%for (var i in messages){%>
       <li>
-        	<strong><%= messages[i]['title'] %></strong>
+        	<a href="<%= messages[i]['link'] %>"<strong><%= messages[i]['title'] %></strong>
         	<div><%= messages[i]['desc'] %></div>
           <div><%= messages[i]['location'] %></div>
         </li>
