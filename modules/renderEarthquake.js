@@ -4,7 +4,7 @@ const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.
 const xml2js = require('xml2js');
 
 let renderEQ = (req, res) => {
-	getContent(dayPath2_5)
+	getContent(hourPath2_5)
 	.then((resp) => {
         let statusMsgs = [];
 		try {

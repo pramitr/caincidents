@@ -37,12 +37,12 @@
 }
 
 .app-body {
-  margin: 5px 5px 0 10px;
+  margin: 5px 5px 0 15px;
 }
 
 ul.app-list {
   padding: 0;
-  margin: 0 0 0 5px;
+  margin: 0;
 }
 
 ul.app-list li {
