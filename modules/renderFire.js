@@ -12,6 +12,7 @@ let renderFire = (req, res) => {
             var extractedData = [];
             parser.parseString(resp, function(err,result){
             	extractedData = result['rss']['channel']['item'];
+            	console.log("ExtractedData", extractedData);
             	if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
             		extractedData.forEach((value, index) => {
             			let title = value['title']['_'];
@@ -33,7 +34,7 @@ let renderFire = (req, res) => {
             console.error(e.message);
         }
 
-        console.log("Messages",messages);
+        
 
         res.render('pages/fire', {
             page: "Fire in CA",
