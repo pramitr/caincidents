@@ -15,15 +15,15 @@ let renderFire = (req, res) => {
             	console.log("ExtractedData", extractedData);
             	if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
             		extractedData.forEach((value, index) => {
-            			let link = "";//value['link'][0]
+            			let link = value['link'][0];
             			let title = value['title'][0];
-            			let desc = ""; //value['description'][0];
-            			let lat = ""; //value['geo:lat'][0];
+            			let desc = value['description'][0];
+            			let lat = value['geo:lat'][0];
             			let long = ""; //value['geo:long'][0];
-            			let location = ""; //latlongToDMS(lat, long);
+            			let location = "";//latlongToDMS(lat, long);
             			//console.log("link: ",link);
-            			console.log("title: ",title)
-            			//console.log("lat long: ",lat,long);
+            			//console.log("title: ",title)
+            			console.log("lat long: ",lat,long);
             			//console.log("desc: ",desc);
             			messages.push({
             				link: link,
