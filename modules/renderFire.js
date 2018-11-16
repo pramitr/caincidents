@@ -11,15 +11,17 @@ let renderFire = (req, res) => {
 			var parser = new xml2js.Parser();
             var extractedData = [];
             parser.parseString(resp, function(err,result){
-            	extractedData = result['rss']['channel']['0']['item'];
+            	extractedData = result['rss']['channel'][0]['item'];
             	console.log("ExtractedData", extractedData);
             	if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
             		extractedData.forEach((value, index) => {
-            			let title = value['title']['0'];
-            			let desc = value['description']['0'];
+            			let link = value['link'][0]
+            			let title = value['title'][0];
+            			let desc = value['description'][0];
             			let lat = value['geo:lat'][0];
             			let long = value['geo:long'][0];
             			let location = latlongToDMS(lat, long);
+            			console.log(link,title,desc,lat,long);
             			messages.push({
             				link: link,
             				title: title,
@@ -27,6 +29,9 @@ let renderFire = (req, res) => {
             				location: location
             			})
             		});
+            	}
+            	else {
+            		console.log("Not array");
             	}
 
             });
