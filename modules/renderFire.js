@@ -11,7 +11,7 @@ let renderFire = (req, res) => {
 			var parser = new xml2js.Parser();
             var extractedData = [];
             parser.parseString(resp, function(err,result){
-            	console.log(result['rss']['$']);
+            	console.log(result['rss']['channel']);
             	extractedData = result['channel']['item'];
             	if(typeof extractedData != 'undefined' && Object.prototype.toString.call(extractedData) === '[object Array]'){
             		extractedData.forEach((value, index) => {
