@@ -16,8 +16,8 @@ let latlongToDMS = (lat, long) => {
     var longitudeCardinal = Math.sign(long) >= 0 ? "E" : "W";
 
     let location = latitude + latitudeCardinal + " " + longitude + longitudeCardinal;
-    let formattedText "<a href=\"https://www.google.com/maps/place/"+ latitude + latitudeCardinal + "+" + longitude + longitudeCardinal + "\">" + location + "</a>";
-    console.log("Location: " + formattedText);
+    let formattedText = "<a href=\"https://www.google.com/maps/place/"+ latitude + latitudeCardinal + "+" + longitude + longitudeCardinal + "\">" + location + "</a>";
+    console.log("Location: ",formattedText);
     return formattedText;
 
 }
