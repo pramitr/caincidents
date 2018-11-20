@@ -5,7 +5,7 @@ let toDegreesMinutesAndSeconds = (coordinate) => {
     var minutes = Math.floor(minutesNotTruncated);
     var seconds = Math.floor((minutesNotTruncated - minutes) * 60);
 
-    return degrees + "°" + minutes + "\'" + seconds + "\"";
+    return degrees + "°" + minutes + "\\\'" + seconds + "\\\"";
 }
 
 let latlongToDMS = (lat, long) => {
