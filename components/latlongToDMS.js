@@ -5,7 +5,7 @@ let toDegreesMinutesAndSeconds = (coordinate) => {
     var minutes = Math.floor(minutesNotTruncated);
     var seconds = Math.floor((minutesNotTruncated - minutes) * 60);
 
-    return degrees + "° " + minutes + "\' " + seconds + "\"";
+    return degrees + "°" + minutes + "\'" + seconds + "\"";
 }
 
 let latlongToDMS = (lat, long) => {
@@ -15,7 +15,9 @@ let latlongToDMS = (lat, long) => {
     var longitude = toDegreesMinutesAndSeconds(long);
     var longitudeCardinal = Math.sign(long) >= 0 ? "E" : "W";
 
-    return latitude + " " + latitudeCardinal + " " + longitude + " " + longitudeCardinal;
+    let location = latitude + "" + latitudeCardinal + " " + longitude + "" + longitudeCardinal;
+    return "<a href=\"https://www.google.com/maps/place/"+ latitude + "" + latitudeCardinal + "+" + longitude + "" + longitudeCardinal + "\">" + location + "</a>";
 }
+
 
 module.exports = latlongToDMS;
