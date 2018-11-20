@@ -34,7 +34,7 @@ let renderFire = (req, res) => {
             		});
             	}
             	else {
-            		console.log("Not an array");
+            		console.log("Extracted response not an array");
             	}
 
             });
