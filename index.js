@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
+const enforce = require('express-sslify');
 //const querystring = require('querystring');
 
 
@@ -12,6 +13,7 @@ var app = express()
 // var router = express.Router()
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.get('/', (req, res) => {
