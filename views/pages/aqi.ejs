@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+<% include ../partials/menu %>
+
+<div class="container-fluid bg-3">
+  <div class="app-label"><%= page %></div>
+  <div class="app-body">
+    <ul class="app-list">
+      <%for (var i in messages){%>
+      <li>
+        	<div><strong><a href="<%= messages[i]['link'] %>"><%= messages[i]['title'] %></a></strong></div>
+        	<div><%- messages[i]['desc'] %></div>
+        </li>
+      <%}%>
+    </ul>
+  </div>
+</div>
+
+</body>
+<% include ../partials/script %>
+</html>
