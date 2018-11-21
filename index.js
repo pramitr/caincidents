@@ -8,6 +8,7 @@ const enforce = require('express-sslify');
 var poll = require('./components/poll.js');
 var renderEQ = require('./modules/renderEarthquake.js');
 var renderFire = require('./modules/renderFire.js');
+var renderAqi = reqire('./modules/renderAqi.js');
 
 var app = express()
 // var router = express.Router()
@@ -24,6 +25,9 @@ app.get('/eq', (req, res) => {
 })
 app.get('/fire', (req, res) => {
   renderFire(req, res);
+})
+app.get('/aqi', (req, res) => {
+  renderAqi(req, res);
 })
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
