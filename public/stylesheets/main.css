@@ -53,7 +53,7 @@ ul.app-aqi-list li {
   list-style: none;
 }
 
-ul.api-aqi-list .app-aqi-li {
+ul.api-aqi-list li.app-aqi-li {
   padding: 10px 20px;
   line-height: 15px;
 }
