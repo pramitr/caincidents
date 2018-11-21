@@ -51,9 +51,6 @@ ul.app-list li {
 
 ul.app-aqi-list li {
   list-style: none;
-}
-
-ul.api-aqi-list li.app-aqi-li {
   padding: 10px 20px;
   line-height: 15px;
 }
