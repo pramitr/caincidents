@@ -4,18 +4,18 @@
   padding-bottom: 80px; }
 .jumbotron .btn-primary {
   background: #845ac7;
-  border-color: #845ac7; 
+  border-color: #845ac7;
 }
 .jumbotron .btn-primary:hover {
-    background: #7646c1; 
+    background: #7646c1;
 }
 .jumbotron p {
   color: #d9ccee;
   max-width: 75%;
-  margin: 1em auto 2em; 
+  margin: 1em auto 2em;
 }
 .navbar + .jumbotron {
-  margin-top: -20px; 
+  margin-top: -20px;
 }
 .jumbotron .lang-logo {
   display: block;
@@ -25,10 +25,10 @@
   width: 100px;
   height: 100px;
   margin: auto;
-  border: 2px solid white; 
+  border: 2px solid white;
 }
 .jumbotron .lang-logo img {
-  max-width: 100%; 
+  max-width: 100%;
 }
 
 .app-label {
@@ -49,7 +49,16 @@ ul.app-list li {
   list-style: none;
 }
 
-.bg-3 { 
+ul.app-aqi-list li {
+  list-style: none;
+}
+
+.api-aqi-list .app-aqi-li {
+  padding: 10px 20px;
+  line-height: 15px;
+}
+
+.bg-3 {
     background-color: #ffffff;
     color: #555555;
 }

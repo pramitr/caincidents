@@ -10,9 +10,9 @@
 <div class="container-fluid bg-3">
   <div class="app-label"><%= page %></div>
   <div class="app-body">
-    <ul class="app-list">
+    <ul class="app-aqi-list">
       <%for (var i in messages){%>
-      <li>
+      <li class="app-aqi-li">
         	<div><strong><a href="<%= messages[i]['link'] %>"><%= messages[i]['title'] %></a></strong></div>
         	<div><%- messages[i]['desc'] %></div>
         </li>
