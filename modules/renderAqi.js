@@ -29,7 +29,7 @@ let renderAqi = (req, res) => {
           messages.push(msg);
         });
       })
-      
+
     } catch (e) {
       console.error(e.message);
     }
@@ -38,9 +38,10 @@ let renderAqi = (req, res) => {
         page: "California Bay Area Air Quality Index",
         messages: messages,
         pageId: "aqi"
-    })
-
+    });
   })
-  .catch((err) => console.error(`Got error while rendering AQI: ${err.message}`));
-
+  .catch((err) => console.error(`Got error while rendering AQI: ${err.message}`))
+  
 }
+
+module.exports = renderAqi;
