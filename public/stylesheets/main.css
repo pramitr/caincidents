@@ -45,14 +45,20 @@ ul.app-list {
   margin: 0;
 }
 
+ul.app-aqi-list {
+  width: fit-content;
+  padding: 0;
+}
+
 ul.app-list li {
   list-style: none;
 }
 
 ul.app-aqi-list li {
   list-style: none;
-  padding: 10px 20px;
+  padding: 10px;
   line-height: 15px;
+  border-bottom: 1px dashed;
 }
 
 .bg-3 {
