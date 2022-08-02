@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+<% include ../partials/menu %>
+
+<div class="container-fluid bg-3">
+  <div class="app-label"><%= pageLabel %></div>
+  <div class="app-body">
+    This is a very simple Node.JS app developed by <a href="https://www.pramitroy.com">me, Pramit Roy</a> using Heroku for the following purpose,
+    <ul>
+      <li>Reporting California incidents like earthquake, fire, air quality etc. More reports can be included if there are other major concerning incidents and availability of corresponding RSS/Atom feed.
+      </li>
+      <li>Using as personal IFTTT like server to poll certain events for taking some action based on that.
+      </li>
+    </ul>
+    Why not just use IFTTT, if you might ask? Well, IFTTT does not work efficiently for many "if" blocks, it tends to miss out on events that I intend to use and it specially does not work for services that require polling. Also there is no option to customize the polling frequency. I am experimenting on this web server to fix those issues. In future, I will work on making this logic more open to support popular "if" blocks that people would want to keep an eye on, either for convenient smart home systems or other essential service alerts.
+  </div>
+</div>
+
+</body>
+<% include ../partials/script %>
+</html>

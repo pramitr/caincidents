@@ -33,11 +33,11 @@
 
 .app-label {
   font-size: 20px;
-  margin: 5px 5px 0 15px;
+  margin: 5px 0;
 }
 
 .app-body {
-  margin: 5px 5px 0 15px;
+  margin: 0;
 }
 
 ul.app-list {
@@ -45,29 +45,15 @@ ul.app-list {
   margin: 0;
 }
 
-ul.app-aqi-list {
-  width: fit-content;
-  padding: 0;
-}
-
 ul.app-list li {
   list-style: none;
-}
-
-ul.app-aqi-list li {
-  list-style: none;
-  padding: 10px;
-  line-height: 15px;
-  border-bottom: 1px dashed;
 }
 
 .bg-3 {
     background-color: #ffffff;
     color: #555555;
 }
-.container-fluid {
-  padding: 10px 0;
-}
+
 .navbar {
     padding-top: 15px;
     padding-bottom: 15px;

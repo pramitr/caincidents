@@ -2,26 +2,35 @@
 <html>
 <head>
   <% include ../partials/header.ejs %>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/eq.css" />
 </head>
 
 <body>
 <% include ../partials/menu %>
 
-<div class="container-fluid bg-3">    
-  <div class="app-label"><%= page %></div>
+<div class="container-fluid bg-3">
+  <div class="app-label"><%= pageLabel %></div>
   <div class="app-body">
     <table>
       <tbody>
       <%for (var i in messages){%>
       <tr>
         <td>
-        	<strong><%= messages[i]['title'] %></strong>
-        	<%- messages[i]['content'] %>
+        	<strong><a href="<%= messages[i]['link'] %>"><%= messages[i]['title'] %></a></strong>
+          <%- messages[i]['content'] %>
+          <div class="last"><strong>Updated</strong> <%= messages[i]['time'] %></div>
         </td>
       </tr>
       <%}%>
     </tbody>
     </table>
+    <p>
+      <% if(pageId === 'earthquakes') { %>
+        <div class="footer-link"><a href="/">Recent Earthquakes</a></div>
+      <% } else { %>
+        <div class="footer-link"><a href="/eq">Earthquakes on the last day</a></div>
+      <% } %>
+    </p>
   </div>
 </div>
 </body>

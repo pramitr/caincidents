@@ -1,12 +1,16 @@
 const https = require('https');
 const xml2js = require('xml2js');
-var is_wee_hour = require('./time.js');
+const {is_wee_hour, is_day_time} = require('./time.js');
 const hourPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.atom"
 const dayPath2_5 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom"
 
 var blinkSun = () => {
+    var red = "red";
+    var white = "brightness:0.1";
+    var color = (is_day_time())? red : white;
+
     var post_data = JSON.stringify({
-        "color": "red",
+        "color": color,
         "period": 1,
         "cycles": 2,
         "persist": false,
@@ -73,7 +77,7 @@ const poll = {
                         //console.log("Raw data",parsedData);
                         var parser = new xml2js.Parser();
                         var extractedData = "";
-                        console.log("Response raw data:",rawData);
+                        // console.log("Response raw data:",rawData);
                         parser.parseString(rawData, function(err,result){
 
                             extractedData = result['feed']['entry'];

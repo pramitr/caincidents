@@ -1,0 +1,13 @@
+.app-body dl {
+    margin: 0px;
+}
+.app-body td div {
+    margin-bottom: 20px;
+}
+.app-body tbody p {
+    margin: 0px;
+}
+
+.app-body .footer-link {
+    font-size: medium;
+}

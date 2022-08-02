@@ -8,14 +8,19 @@
 <% include ../partials/menu %>
 
 <div class="container-fluid bg-3">    
-  <div class="app-label"><%= page %></div>
+  <div class="app-label"><%= pageLabel %></div>
   <div class="app-body">
     <ul class="app-list">
-      <%for (var i in messages){%>
+      <%for (var i in messages) {%>
       <li>
         	<a href="<%= messages[i]['link'] %>"><strong><%= messages[i]['title'] %></strong></a>
-        	<div><%= messages[i]['desc'] %></div>
-          <div>Location: <%- messages[i]['location'] %></div>
+          <div><%= messages[i]['desc'] %></div>
+          <div><b>Started:</b> <%= messages[i]['started'] %></div>
+          <div><b>Acres Burned:</b> <%= messages[i]['acres'] %></div>
+          <div><b>Containment:</b> <%= messages[i]['pCont'] %>%</div>
+          <div><b>County:</b> <%= messages[i]['county'] %></div>
+          <div><b>Location:</b> <%- messages[i]['location'] %></div>
+          <div>&mdash;</div>
         </li>
       <%}%>
     </ul>

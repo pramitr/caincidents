@@ -2,19 +2,38 @@
 <html>
 <head>
   <% include ../partials/header.ejs %>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/aqi.css" />
 </head>
 
 <body>
 <% include ../partials/menu %>
 
 <div class="container-fluid bg-3">
-  <div class="app-label"><%= page %></div>
+  <div class="app-label"><%= pageLabel %></div>
   <div class="app-body">
+    <div class="user-heading">Weather and Air Quality in Your Location: <strong><%= messageV2['city'] %>, <%= messageV2['state'] %></strong></div>
+    <div name="airvisual_widget" key="HSv54Gzpsdnw4MzzD"></div>
+    <ul class="app-aqi-city">
+        <li class="app-aqi-li">
+          <div>Last updated at: <%= messageV2['time'] %></div>
+          <div><strong>AQI:</strong> 
+            <strong><span style="color:<%= messageV2['aqiColor'] %>;background:<%= messageV2['aqiBgColor'] %>;padding:5px;"><%= messageV2['aqi'] %></span></strong> 
+            (<a target="_blank" href="https://www.airnow.gov/aqi/aqi-basics/">what does this color mean?</a>)
+          </div>
+          <div><strong>Temperature:</strong> <%= messageV2['temperature'] %> °F</div>
+          <div><strong>Condition: </strong> <span><img width="25" src="<%= messageV2['weatherIconUrl'] %>"></span> <%= messageV2['weatherCondition'] %></div>
+          <div><strong>Pressure:</strong> <%= messageV2['pressure'] %> mb</div>
+          <div><strong>Humidity: </strong> <%= messageV2['humidity'] %>%  </div>
+          <div><strong>Windspeed: </strong> <img src="https://www.iqair.com/assets/svg/ic-wind-05-s-24-px.svg" style="transform: rotate(<%= messageV2['windDirection'] %>deg);">
+            <%= messageV2['windSpeed'] %> mph</div>
+        </li>
+    </ul>
     <ul class="app-aqi-list">
       <%for (var i in messages){%>
       <li class="app-aqi-li">
         	<div><strong><a href="<%= messages[i]['link'] %>"><%= messages[i]['title'] %></a></strong></div>
-        	<div><%- messages[i]['desc'] %></div>
+          <div><%- messages[i]['ppType'] %> <strong><%- messages[i]['ppAqi'] %></strong> <%- messages[i]['ppCondition'] %></div>
+          <div><%- messages[i]['ozoneTitle'] %> <strong><%- messages[i]['ozoneAqi'] %></strong> <%- messages[i]['ozoneCondition'] %></div>
         </li>
       <%}%>
     </ul>

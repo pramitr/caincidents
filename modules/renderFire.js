@@ -1,15 +1,16 @@
-const getContent = require('./getContent.js');
-const fireUrl = "http://www.fire.ca.gov/rss/rss.xml";
-const xml2js = require('xml2js');
+const getJsonContent = require('./getJsonContent.js');
+const fireUrl = "https://www.fire.ca.gov/umbraco/api/IncidentApi/List?inactive=false";
+//const xml2js = require('xml2js');
 const latlongToDMS = require('../components/latlongToDMS.js');
 
 let renderFire = (req, res) => {
-	getContent(fireUrl)
+	getJsonContent(fireUrl, null, false, null)
 	.then((resp) => {
 		let messages = [];
 		try {
+			/*
+			var extractedData = [];
 			var parser = new xml2js.Parser();
-            var extractedData = [];
             parser.parseString(resp, function(err,result){
             	extractedData = result['rss']['channel'][0]['item'];
             	//console.log("ExtractedData", extractedData);
@@ -37,17 +38,43 @@ let renderFire = (req, res) => {
             		console.log("Extracted response not an array");
             	}
 
-            });
-
+			});
+			*/
+			resp.forEach(element => {
+				let link = element.Url;
+				let title = element.Name;
+				let lat = element.Latitude;
+				let long = element.Longitude;
+				let desc = element.ControlStatement;
+				let location = element.Location;
+				let county = element.County;
+				let pCont = element.PercentContained;
+				let utcTime = element.Started;
+				let localTime = new Date(utcTime).toLocaleString();
+				let acres = element.AcresBurned
+				let isCalFire = element.CalFireIncident;
+				messages.push({
+					link: link,
+					title: title,
+					desc: desc,
+					county: county,
+					pCont: pCont,
+					started: localTime,
+					location: location,
+					acres: acres,
+					isCalFire: isCalFire
+				});
+			});
 		} catch (e) {
             console.error(e.message);
         }
 
-        
+        const content = messages.filter(m => m.isCalFire);
 
         res.render('pages/fire', {
-            page: "All fire reports in California",
-            messages: messages,
+			pageLabel: "All Cal Fire incidents",
+			pageTitle: "California Fire Incidents",
+            messages: content,
             pageId: "fire"
         })
 
