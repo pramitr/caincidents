@@ -1,3 +1,10 @@
+# Summary
+
+This is the code to power my California Incidents site. Currently the app is built on heroku.
+
+Below are some generic nodejs readme.
+
+
 # node-js-getting-started
 
 A barebones Node.js app using [Express 4](http://expressjs.com/).
